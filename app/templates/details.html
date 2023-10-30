@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi tiết sản phẩm</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}" />
+</head>
+<body>
+    <div class="details_container">
+        <div class="product_img">
+            <img width="500px" src="{{ url_for('static', filename=current_product.image)}}" alt="{{current_product.name}}" />
+        </div>
+        <div class="product_details">
+            <h2><b>Tên sản phẩm: {{current_product.name}}</b></h2>
+            <h3>Mã sản phẩm {{current_product.id}}</h3>
+            <p> Chi tiết: {{current_product.description}}></p>
+            <h3>Giá: {{'{:,.1f}'.format(current_product.price)}}</h3>
+        </div>
+    </div>
+</body>
+</html>

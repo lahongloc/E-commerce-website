@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tất cả sản phẩm</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}" />
+</head>
+<body>
+
+    <h1 class="title">TẤT CẢ SẢN PHẨM</h1>
+
+
+
+    <div class="products_container">
+        <form style="margin-bottom: 1rem;" action="">
+            <label for="keyword">Tìm kiếm theo tên sản phẩm:</label></br>
+            <input type="text" name="keyword" />
+            <input type="submit" value="Tìm kiếm" />
+        </form>
+
+        <form style="margin-bottom: 1rem;" action="">
+            <label for="from_price">Tìm kiếm theo mức giá:</label></br>
+            <label for="from_price">Từ:</label>
+            <input type="number" name="from_price" />
+            <label for="to_price">Từ:</label>
+            <input type="number" name="to_price" />
+            <input type="submit" value="Tìm kiếm" />
+        </form>
+
+        <table border="1" class="products_list">
+            <tr>
+                <th>Sản phẩm</th>
+                <th>tên sản phẩm</th>
+                <th>Mã sản phẩm</th>
+                <th>Mô tả chi tiết</th>
+                <th>Giá</th>
+            </tr>
+            {% for p in products %}
+            <tr>
+                <td>
+                    <a href="/products/{{p.id}}">
+                        <img width="120px" src="{{ url_for('static', filename=p.image)}}" />
+                    </a>
+
+                </td>
+                <td><b>{{p.name}}</b></td>
+                <td>{{p.id}}</td>
+                <td>{{p.description}}</td>
+                <td>{{'{:,.1f}'.format(p.price)}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</body>
+</html>
